@@ -1,4 +1,4 @@
-import 'package:datebase/screens/homepage.dart';
+import 'package:datebase/screens/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.blueAccent,
         primaryColor: Colors.white,
       ),
-      home: Homepage(),
+      home: CustomAppBar(),
     );
   }
 }

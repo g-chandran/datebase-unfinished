@@ -1,3 +1,4 @@
+import 'package:datebase/screens/test_screen.dart';
 import 'package:datebase/widgets/button_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,6 +40,14 @@ class MyApp extends StatelessWidget {
                   sizeInfo: 31,
                   onTap: () {
                     print('Calendar tapped');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return TestDatePicker();
+                        },
+                      ),
+                    );
                   },
                 ),
               ),
@@ -57,7 +66,7 @@ class MyApp extends StatelessWidget {
               ),
             ],
           ),
-          body: HomePage(),
+          body: TestDatePicker(),
         ),
       ),
     );

@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
                     '14',
                     style: TextStyle(
                       fontSize: 70,
-                      color: Colors.black,
+                      color: kBlack,
                       fontFamily: kFontFamily,
                     ),
                   ),

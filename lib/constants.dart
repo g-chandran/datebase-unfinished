@@ -24,3 +24,4 @@ const Color kBlue = Color(0xFF459EF6);
 const Color kWhite = Colors.white;
 const Color kGrey = Color(0xFF536679);
 const String kFontFamily = 'Muli-Bold';
+const Color kBlack = Colors.black;

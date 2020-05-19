@@ -12,9 +12,7 @@ Map<String, int> kBoxContent = {
 };
 
 class HomePage extends StatelessWidget {
-  const HomePage({
-    Key key,
-  }) : super(key: key);
+  const HomePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +110,7 @@ class HomePage extends StatelessWidget {
                   ),
                 )
                 .toList(),
-          )
+          ),
         ],
       ),
     );

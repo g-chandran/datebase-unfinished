@@ -12,6 +12,11 @@ class HomepageHolder extends StatelessWidget {
   Widget build(BuildContext context) {
     bool toggleKey = false;
     OverlayManager overlayManager = OverlayManager(context: context);
+    void toggler() {
+      toggleKey = !toggleKey;
+      toggleKey ? overlayManager.showOverlay() : overlayManager.removeOverlay();
+    }
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -31,12 +36,7 @@ class HomepageHolder extends StatelessWidget {
               child: ButtonIcon(
                 iconData: Icons.calendar_today,
                 sizeInfo: 31,
-                onTap: () {
-                  toggleKey = !toggleKey;
-                  toggleKey
-                      ? overlayManager.showOverlay()
-                      : overlayManager.removeOverlay();
-                },
+                onTap: () => toggler(),
               ),
             ),
             Padding(
@@ -54,7 +54,14 @@ class HomepageHolder extends StatelessWidget {
             ),
           ],
         ),
-        body: HomePage(),
+        body: GestureDetector(
+            onTap: () {
+              if (toggleKey) {
+                toggleKey = !toggleKey;
+                overlayManager.removeOverlay();
+              }
+            },
+            child: HomePage()),
       ),
     );
   }

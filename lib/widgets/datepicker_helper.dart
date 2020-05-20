@@ -1,6 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:datebase/utilities/constants.dart';
 
-import '../constants.dart';
+class ChosenDate extends StatelessWidget {
+  const ChosenDate({Key key, @required this.i}) : super(key: key);
+  final int i;
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      maxRadius: 21,
+      child: Text(
+        i.toString(),
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 21,
+          color: Colors.black,
+          fontFamily: kFontFamily,
+        ),
+      ),
+    );
+  }
+}
+
+class NonChosenDate extends StatelessWidget {
+  final int i;
+  const NonChosenDate({Key key, this.i}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      i.toString(),
+      style: TextStyle(
+        fontSize: 20,
+        color: Colors.white,
+        fontFamily: kFontFamily,
+      ),
+    );
+  }
+}
 
 class DatepickerButtons extends StatelessWidget {
   const DatepickerButtons(

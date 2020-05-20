@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:datebase/constants.dart';
+import 'package:datebase/utilities/constants.dart';
 
 SnackBar showSnackBar({@required String bookmarkInfo}) {
   return SnackBar(

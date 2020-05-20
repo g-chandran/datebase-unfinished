@@ -1,7 +1,7 @@
 import 'package:datebase/widgets/bookmark_button.dart';
 import 'package:datebase/widgets/button_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:datebase/constants.dart';
+import 'package:datebase/utilities/constants.dart';
 import 'package:datebase/widgets/dashboard_card.dart';
 
 Map<String, int> kBoxContent = {

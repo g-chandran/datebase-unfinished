@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:datebase/constants.dart';
+import 'package:datebase/utilities/constants.dart';
 
 class DashboardCards extends StatelessWidget {
   final content;

@@ -15,7 +15,9 @@ class DatePicker extends StatefulWidget {
 }
 
 int maxDates = 31;
-int chosenMonth = 1, chosenDate = 1;
+int finalMonth = 1, finalDate = 1;
+int chosenMonth = finalMonth;
+int chosenDate = finalDate;
 const double kDatePickerHeight = 423.0;
 const double kDatePickerWidth = 410.0;
 
@@ -25,7 +27,6 @@ class _DatePickerState extends State<DatePicker> {
     return x;
   }
 
-  int chosenDate = 1;
   @override
   Widget build(BuildContext context) {
     OverlayManager overlayManager =
@@ -52,12 +53,12 @@ class _DatePickerState extends State<DatePicker> {
                     control: SwiperControl(color: Colors.grey[800]),
                     itemCount: months.length,
                     onIndexChanged: (value) {
-                      chosenMonth = value + 1;
-                      print(_setNumber(chosenMonth.toString()));
+                      finalMonth = value + 1;
+                      print(_setNumber(finalMonth.toString()));
                       setState(() {
                         maxDates = dateInfo[value][months[value]];
-                        if (chosenDate > maxDates) {
-                          chosenDate = maxDates;
+                        if (finalDate > maxDates) {
+                          finalDate = maxDates;
                         }
                       });
                     },
@@ -84,18 +85,19 @@ class _DatePickerState extends State<DatePicker> {
                       children: <Widget>[
                         for (int i = 1; i <= maxDates; i++)
                           GestureDetector(
-                              onTap: () {
-                                print(i);
-                                setState(() {
-                                  chosenDate = i;
-                                });
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: i == chosenDate
-                                    ? ChosenDate(i: i)
-                                    : NonChosenDate(i: i),
-                              )),
+                            onTap: () {
+                              print(i);
+                              setState(() {
+                                finalDate = i;
+                              });
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: i == finalDate
+                                  ? ChosenDate(i: i)
+                                  : NonChosenDate(i: i),
+                            ),
+                          ),
                       ],
                     ),
                   ),

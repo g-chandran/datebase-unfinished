@@ -112,7 +112,10 @@ class _DatePickerState extends State<DatePicker> {
                         overlayManager: overlayManager,
                         okOperation: true,
                       ),
-                      DatepickerButtons(overlayManager: overlayManager),
+                      DatepickerButtons(
+                        overlayManager: overlayManager,
+                        okOperation: false,
+                      ),
                     ],
                   ),
                 )

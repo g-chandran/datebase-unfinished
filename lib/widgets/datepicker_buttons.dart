@@ -1,22 +1,25 @@
-import 'package:datebase/utilities/overlay_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
 class DatepickerButtons extends StatelessWidget {
   const DatepickerButtons(
-      {Key key, @required this.overlayManager, this.okOperation = false})
+      {Key key, this.okOperation = false, this.date, this.month})
       : super(key: key);
 
-  final OverlayManager overlayManager;
   final bool okOperation;
+  final String date, month;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        okOperation ? print('Ok') : print('cancel');
-        overlayManager.removeOverlay();
+        if (okOperation) {
+          print('Ok\nMonth: $month, Date: $date');
+        } else {
+          print('Cancel');
+        }
+        Navigator.pop(context);
       },
       child: Container(
         height: 43,

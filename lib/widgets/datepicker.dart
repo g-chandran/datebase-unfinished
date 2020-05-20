@@ -2,7 +2,6 @@ import 'package:datebase/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:datebase/utilities/month_info.dart';
-import 'package:datebase/utilities/overlay_manager.dart';
 
 import 'datepicker_buttons.dart';
 
@@ -16,26 +15,25 @@ class DatePicker extends StatefulWidget {
 
 int maxDates = 31;
 int finalMonth = 1, finalDate = 1;
-int chosenMonth = finalMonth;
+// int chosenMonth = finalMonth;
 int chosenDate = finalDate;
 const double kDatePickerHeight = 423.0;
 const double kDatePickerWidth = 410.0;
 
 class _DatePickerState extends State<DatePicker> {
-  String _setNumber(String x) {
+  String _setNumber(int value) {
+    String x = value.toString();
     if (x.length == 1) return '0' + x;
     return x;
   }
 
   @override
   Widget build(BuildContext context) {
-    OverlayManager overlayManager =
-        OverlayManager(context: widget.datePickerContext);
     return Material(
-      elevation: 14.0,
       color: Colors.transparent,
       child: Column(
         children: <Widget>[
+          SizedBox(height: 75),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
@@ -54,7 +52,6 @@ class _DatePickerState extends State<DatePicker> {
                     itemCount: months.length,
                     onIndexChanged: (value) {
                       finalMonth = value + 1;
-                      print(_setNumber(finalMonth.toString()));
                       setState(() {
                         maxDates = dateInfo[value][months[value]];
                         if (finalDate > maxDates) {
@@ -86,7 +83,6 @@ class _DatePickerState extends State<DatePicker> {
                         for (int i = 1; i <= maxDates; i++)
                           GestureDetector(
                             onTap: () {
-                              print(i);
                               setState(() {
                                 finalDate = i;
                               });
@@ -111,11 +107,11 @@ class _DatePickerState extends State<DatePicker> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       DatepickerButtons(
-                        overlayManager: overlayManager,
+                        month: _setNumber(finalMonth),
+                        date: _setNumber(finalDate),
                         okOperation: true,
                       ),
                       DatepickerButtons(
-                        overlayManager: overlayManager,
                         okOperation: false,
                       ),
                     ],

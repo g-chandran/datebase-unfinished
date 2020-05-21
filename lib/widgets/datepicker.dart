@@ -12,7 +12,7 @@ class DatePicker extends StatefulWidget {
 
 int maxDates = 31;
 int finalMonth = 1, finalDate = 1;
-int temp = 0;
+int temp = 0, chosenIndex;
 const double kDatePickerHeight = 410.0;
 const double kDatePickerWidth = 410.0;
 
@@ -47,12 +47,12 @@ class _DatePickerState extends State<DatePicker> {
                     carouselController: CarouselController(),
                     itemCount: months.length,
                     itemBuilder: (context, index) {
-                      return Center(
-                        child: Text(
-                          months[index].toString(),
-                          style: kHeading.copyWith(
-                              fontSize: 40, color: Colors.black),
-                        ),
+                      return Text(
+                        months[index].toString(),
+                        style: kHeading.copyWith(
+                            fontSize: 40,
+                            color:
+                                index == chosenIndex ? kBlack : Colors.white),
                       );
                     },
                     options: CarouselOptions(
@@ -61,9 +61,11 @@ class _DatePickerState extends State<DatePicker> {
                       enableInfiniteScroll: true,
                       autoPlay: false,
                       enlargeCenterPage: true,
+                      viewportFraction: 0.25,
                       onPageChanged:
                           (int index, CarouselPageChangedReason reason) {
                         setState(() {
+                          chosenIndex = index;
                           finalMonth = index + 1;
                           maxDates = dateInfo[index][months[index]];
                           if (finalDate > maxDates) {

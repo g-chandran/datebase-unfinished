@@ -13,7 +13,7 @@ dependencies:
   sembast: ^2.4.3
   path_provider: ^1.6.7
   provider: ^4.1.1
-  flutter_swiper: ^1.1.6
+  carousel_slider: ^2.0.0
 
 dev_dependencies:
   flutter_test:

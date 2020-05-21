@@ -65,6 +65,10 @@ class _DatePickerState extends State<DatePicker> {
                           (int index, CarouselPageChangedReason reason) {
                         setState(() {
                           finalMonth = index + 1;
+                          maxDates = dateInfo[index][months[index]];
+                          if (finalDate > maxDates) {
+                            finalDate = maxDates;
+                          }
                         });
                         temp = index;
                       },

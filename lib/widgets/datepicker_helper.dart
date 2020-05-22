@@ -1,5 +1,8 @@
+import 'package:datebase/utilities/network_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:datebase/utilities/constants.dart';
+
+NetworkHelper networkHelper = NetworkHelper();
 
 class ChosenDate extends StatelessWidget {
   const ChosenDate({Key key, @required this.i}) : super(key: key);
@@ -49,10 +52,15 @@ class DatepickerButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void getter() async {
+      await networkHelper.getResponse(date: date, month: month);
+    }
+
     return GestureDetector(
       onTap: () {
         if (okOperation) {
           print('Ok\nMonth: $month, Date: $date');
+          getter();
         } else {
           print('Cancel');
         }

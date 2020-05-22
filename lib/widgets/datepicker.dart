@@ -12,7 +12,7 @@ class DatePicker extends StatefulWidget {
 
 int maxDates = 31;
 int finalMonth = 1, finalDate = 1;
-int temp = 0, chosenIndex;
+int temp = 0, chosenIndex = 0;
 const double kDatePickerHeight = 410.0;
 const double kDatePickerWidth = 410.0;
 

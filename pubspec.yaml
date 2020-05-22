@@ -9,11 +9,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.3
-  sembast: ^2.4.3
-  path_provider: ^1.6.7
-  provider: ^4.1.1
-  carousel_slider: ^2.0.0
+  cupertino_icons: ^0.1.3 # default
+  sembast: ^2.4.3 # database management
+  path_provider: ^1.6.7 # to get the path for storing data
+  provider: ^4.1.1 # state management
+  carousel_slider: ^2.0.0 # to implement Months in datepicker
+  dio: ^3.0.9 # for connectivity
+  dio_http_cache: ^0.2.6 # to perform http requests
 
 dev_dependencies:
   flutter_test:
@@ -27,8 +29,3 @@ flutter:
     - family: Muli-Bold
       fonts:
         - asset: assets/fonts/Muli-Bold.ttf
-    # - family: Trajan Pro
-    #   fonts:
-    #     - asset: fonts/TrajanPro.ttf
-    #     - asset: fonts/TrajanPro_Bold.ttf
-    #       weight: 700

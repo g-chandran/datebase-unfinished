@@ -10,11 +10,11 @@ class DatePicker extends StatefulWidget {
   _DatePickerState createState() => _DatePickerState();
 }
 
-int maxDates = 31;
-int finalMonth = 1, finalDate = 1;
-int temp = 0, chosenIndex = 0;
-const double kDatePickerHeight = 410.0;
-const double kDatePickerWidth = 410.0;
+int _maxDates = 31;
+int _finalMonth = 1, _finalDate = 1;
+int _temp = 0, _chosenIndex = 0;
+const double _kDatePickerHeight = 410.0;
+const double _kDatePickerWidth = 410.0;
 
 class _DatePickerState extends State<DatePicker> {
   String _setNumber(int value) {
@@ -35,8 +35,8 @@ class _DatePickerState extends State<DatePicker> {
               borderRadius: BorderRadius.circular(12),
               color: kBlue,
             ),
-            width: kDatePickerWidth,
-            height: kDatePickerHeight,
+            width: _kDatePickerWidth,
+            height: _kDatePickerHeight,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -50,14 +50,14 @@ class _DatePickerState extends State<DatePicker> {
                       return Text(
                         months[index].toString(),
                         style: kHeading.copyWith(
-                            fontSize: 40,
-                            color:
-                                index == chosenIndex ? kBlack : Colors.white),
+                          fontSize: 40,
+                          color: index == _chosenIndex ? kBlack : Colors.white,
+                        ),
                       );
                     },
                     options: CarouselOptions(
                       height: 50,
-                      initialPage: temp,
+                      initialPage: _temp,
                       enableInfiniteScroll: true,
                       autoPlay: false,
                       enlargeCenterPage: true,
@@ -65,14 +65,14 @@ class _DatePickerState extends State<DatePicker> {
                       onPageChanged:
                           (int index, CarouselPageChangedReason reason) {
                         setState(() {
-                          chosenIndex = index;
-                          finalMonth = index + 1;
-                          maxDates = dateInfo[index][months[index]];
-                          if (finalDate > maxDates) {
-                            finalDate = maxDates;
+                          _chosenIndex = index;
+                          _finalMonth = index + 1;
+                          _maxDates = dateInfo[index][months[index]];
+                          if (_finalDate > _maxDates) {
+                            _finalDate = _maxDates;
                           }
                         });
-                        temp = index;
+                        _temp = index;
                       },
                     ),
                   ),
@@ -87,16 +87,16 @@ class _DatePickerState extends State<DatePicker> {
                       crossAxisSpacing: 4,
                       mainAxisSpacing: 0,
                       children: <Widget>[
-                        for (int i = 1; i <= maxDates; i++)
+                        for (int i = 1; i <= _maxDates; i++)
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                finalDate = i;
+                                _finalDate = i;
                               });
                             },
                             child: Container(
                               alignment: Alignment.center,
-                              child: i == finalDate
+                              child: i == _finalDate
                                   ? ChosenDate(i: i)
                                   : NonChosenDate(i: i),
                             ),
@@ -114,8 +114,8 @@ class _DatePickerState extends State<DatePicker> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       DatepickerButtons(
-                        month: _setNumber(finalMonth),
-                        date: _setNumber(finalDate),
+                        month: _setNumber(_finalMonth),
+                        date: _setNumber(_finalDate),
                         okOperation: true,
                       ),
                       DatepickerButtons(
